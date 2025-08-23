@@ -1,11 +1,14 @@
 import React,{useEffect,useState} from "react";
 import Hero from "../components/Hero";
-import AboutUs from "../components/AboutUs";
+import AboutMe from "../components/AboutMe";
 import Services from "../components/Services";
 import Projects from "../components/Projects";
-import WhyUs from "../components/WhyUs";
+import Skills from "../components/Skills";
+import Education from "../components/Education";
+import Stats from "../components/Stats";
+import Experience from "../components/Experience";
 import Inquiry from "../components/Inquiry"
-
+import Contact from "../components/Contact" 
 export default function LandingPage() {
     const [showInquiry, setShowInquiry] = useState(false);
 
@@ -20,11 +23,16 @@ export default function LandingPage() {
   
   return (
     <>
-      <Hero />
-      <AboutUs />
-      <Services />
-      <Projects />
-      <WhyUs />
+      <Hero id="hero" />
+      <AboutMe id="about" />
+      <Stats id="stats" />
+      <Experience id="portfolio" />
+      <Services id="services"/>
+      <Skills  id="skills"/>
+      <Education id="education"/>
+      <Projects id="projects"/>
+      <Contact id="contact"/>
+
       {/*Inquiry Modal Popup */}
       {showInquiry && (
         <Inquiry

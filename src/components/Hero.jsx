@@ -1,201 +1,153 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import CardSwap, { Card } from "../animation/CardSwap";
-import { Phone } from "lucide-react";
-import hero1 from "../assets/img/hero1.jpg";
-import hero2 from "../assets/img/hero2.jpg";
-import hero3 from "../assets/img/hero3.png";
-import hero4 from "../assets/img/hero4.jpg";
-import Inquiry from "./Inquiry";
-import { useState } from "react";
+import { motion } from "framer-motion";
+import { FaNodeJs, FaDownload, FaCode } from "react-icons/fa";
+import {
+  SiNextdotjs,
+  SiFirebase,
+  SiMongodb,
+  SiTailwindcss,
+  SiReact,
+  SiLaravel,
+} from "react-icons/si";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from 'swiper/modules';
 
-export default function Hero() {
-  const [open, setOpen] = useState(false);
+
+import "swiper/css";
+import "swiper/css/autoplay";
+
+const profileImageUrl =
+  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=774&q=80";
+
+const Hero = () => {
+  const sectionVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.2, duration: 0.5 } },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeInOut" } },
+  };
+
+  const imageVariants = {
+    hidden: { opacity: 0, scale: 0.8, rotate: -10 },
+    visible: { opacity: 1, scale: 1, rotate: 0, transition: { duration: 0.8, ease: "easeOut" } },
+  };
+
+  const techIcons = [
+    { icon: <FaNodeJs size={28} className="text-gray-300" />, name: "Node.js" },
+    { icon: <SiTailwindcss size={28} className="text-gray-300" />, name: "Tailwind" },
+    { icon: <SiNextdotjs size={28} className="text-gray-300" />, name: "Next.js" },
+    { icon: <SiFirebase size={28} className="text-gray-300" />, name: "Firebase" },
+    { icon: <SiMongodb size={28} className="text-gray-300" />, name: "MongoDB" },
+    { icon: <SiReact size={28} className="text-gray-300" />, name: "React" },
+    { icon: <SiLaravel size={28} className="text-gray-300" />, name: "Laravel" },
+    { icon: <SiFirebase size={28} className="text-gray-300" />, name: "Firebase" },
+    { icon: <SiMongodb size={28} className="text-gray-300" />, name: "MongoDB" },
+    { icon: <SiReact size={28} className="text-gray-300" />, name: "React" },
+    { icon: <SiLaravel size={28} className="text-gray-300" />, name: "Laravel" },
+  ];
 
   return (
-    <section className="bg-[#FFFFFF] w-full mt-25 mb-0 lg:mb-15 overflow-hidden">
-      <div className="max-w-10xl pl-4 sm:pl-6 lg:pl-20 pr-5 py-12 flex flex-col lg:flex-row gap:10">
-        {/* LEFT SIDE (Text + CardSwap + Hero Image) */}
-        <div className="w-full lg:w-1/2 flex flex-col">
-          {/* TEXT */}
-          <div>
-            <p className="text-[#478097] text-sm lg:text-lg font-semibold">
-              Best website development company in Indore
-            </p>
+    <motion.section
+      className="bg-[#1e1e1e] font-mono"
+      variants={sectionVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-0 py-6">
+        <div className="animate-gradient-border rounded-2xl p-0.5">
+          <div className="bg-[#2a2a30] text-white relative overflow-hidden rounded-2xl p-6 sm:p-8 md:p-10 lg:p-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
 
-            <h1 className="m-0 font-bold text-[28px] leading-[36px] lg:text-[70px] lg:leading-[90px]">
-              We are Ready to
-            </h1>
-            <h1 className="m-0 font-bold text-[30px] leading-[40px] lg:text-[80px] lg:leading-[90px]">
-              Build Your <span className="text-[#478097]">Business</span>
-            </h1>
-
-            <p className="text-[#757575] font-medium text-xs lg:text-base leading-[20px] lg:leading-[24px] mt-4">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              Lorem Ipsum has been the industry's standard dummy type and
-              scrambled it to make a type specimen.
-            </p>
-
-            <button
-              onClick={() => setOpen(true)}
-              className="mt-6 inline-flex items-center gap-2 px-6 py-3 rounded-full text-white font-semibold bg-[#F26A33] hover:text-black transition"
-            >
-              <Phone size={20} /> Request Call
-            </button>
-
-            <Inquiry isOpen={open} onClose={() => setOpen(false)} />
-          </div>
-
-          {/* CardSwap (MOBILE/TABLET ONLY) */}
-          <div className="lg:hidden relative z-20 mt-3 ">
-            <div className="flex justify-center">
-              <CardSwap
-                // Responsive card dimensions
-                width={360}
-                height={320}
-                cardDistance={25}
-                verticalDistance={30}
-                delay={5000}
-                pauseOnHover={false}
-                className="mx-auto sm:w-[200px] sm:h-[170px] md:w-[240px] md:h-[190px]"
+              {/* Image Section */}
+              <motion.div
+                className="w-full mx-auto order-1 md:order-2"
+                variants={imageVariants}
               >
-                {/* Card 1 */}
-                <Card className="bg-white shadow-md p-3 border-2 border-[#CFFFF5]">
-                  <h3 className="text-xs sm:text-sm md:text-base font-semibold text-black">
-                    Design
-                  </h3>
-                  <p className="text-[13px]  leading-[14px] text-mutedText mt-1">
-                    Sed ut perspiciatis unde omnis iste natus error sit
-                    voluptatem.
-                  </p>
+                <div
+                  className="relative w-full h-72 sm:h-96 md:h-[400px] lg:h-[450px] "
+                  style={{
+                    clipPath:
+                      "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
+                  }}
+                >
                   <img
-                    src={hero2}
-                    alt="Hero"
-                    loading="lazy"
-                    className="mt-2 w-full h-58 sm:h-53  md:h-50 object-cover rounded"
+                    src={profileImageUrl}
+                    alt="James - Full Stack Developer"
+                    className="w-full h-full object-cover"
                   />
-                </Card>
+                </div>
+              </motion.div>
 
-                {/* Card 2 */}
-                <Card className="bg-white shadow-md p-3 border-2 border-[#FFF6D2]">
-                  <h3 className="text-xs sm:text-sm md:text-base font-semibold text-black">
-                    Development
-                  </h3>
-                  <p className="text-[13px] leading-[14px] text-mutedText mt-1">
-                    Sed ut perspiciatis unde omnis iste natus error sit
-                    voluptatem.
-                  </p>
-                  <img
-                    src={hero3}
-                    alt="Hero"
-                    loading="lazy"
-                    className="mt-2 w-full h-58 sm:h-53  md:h-50 object-cover rounded"
-                  />
-                </Card>
+              {/* Text Section */}
+              <div className="text-center md:text-left order-2 md:order-1">
+                <motion.p className="mb-4 text-gray-400" variants={itemVariants}>
+                  <span className="text-pink-500">&lt;span&gt;</span> Hey, I'm Goutam{" "}
+                  <span className="text-pink-500">&lt;/span&gt;</span>
+                </motion.p>
+                <motion.h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4" variants={itemVariants}>
+                  Senior &#123;Full <br className="hidden sm:block" />
+                  <span className="text-green-400">Stack</span>&#125; Web & App <br className="hidden sm:block" />
+                  Developer
+                </motion.h1>
+                <motion.p className="mb-8 text-gray-400 max-w-md sm:max-w-lg md:max-w-xl mx-auto md:mx-0 leading-relaxed" variants={itemVariants}>
+                  <span className="text-pink-500">&lt;p&gt;</span>
+                  With expertise in cutting-edge tech like <span className="text-red-400">React</span>, <span className="text-red-400">NodeJS</span>, and <span className="text-red-400">Laravel</span>, I deliver innovative and robust web solutions.
+                  <span className="text-pink-500">&lt;/p&gt;</span>
+                </motion.p>
 
-                {/* Card 3 */}
-                <Card className="bg-white shadow-md p-3 border-2 border-[#F5CDFF]">
-                  <h3 className="text-xs sm:text-sm md:text-base font-semibold text-black">
-                    Development
-                  </h3>
-                  <p className="text-[13px] leading-[14px] text-mutedText mt-1">
-                    Sed ut perspiciatis unde omnis iste natus error sit
-                    voluptatem.
-                  </p>
-                  <img
-                    src={hero4}
-                    alt="Hero"
-                    loading="lazy"
-                    className="mt-2 w-full h-58 sm:h-53  md:h-50 object-cover rounded"
-                  />
-                </Card>
-              </CardSwap>
+                {/* Tech Stack Slider */}
+                <motion.div className="mb-10" variants={itemVariants}>
+                  <Swiper
+                    modules={[Autoplay]}
+                    slidesPerView={2}
+                    spaceBetween={10}
+                    loop={true}
+                    autoplay={{ delay: 2000, disableOnInteraction: false }}
+                    breakpoints={{
+                      320: { slidesPerView: 2, spaceBetween: 10 },
+                      480: { slidesPerView: 3, spaceBetween: 12 },
+                      640: { slidesPerView: 4, spaceBetween: 15 },
+                      768: { slidesPerView: 5, spaceBetween: 18 },
+                      1024: { slidesPerView: 6, spaceBetween: 20 },
+                      1280: { slidesPerView: 7, spaceBetween: 25 },
+                    }}
+                  >
+                    {techIcons.map((tech, index) => (
+                      <SwiperSlide key={index}>
+                        <motion.div
+                          className="p-3 border border-gray-600/50 rounded-lg flex items-center justify-center"
+                          whileHover={{ scale: 1.1, backgroundColor: "#3a3a40" }}
+                          transition={{ type: "spring", stiffness: 400 }}
+                        >
+                          {tech.icon}
+                        </motion.div>
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
+                </motion.div>...and more
+
+
+                <motion.a
+                  href="#download-cv"
+                  className="inline-flex items-center text-green-400 border border-green-400/50 px-5 sm:px-6 py-3 transition-colors group hover:bg-green-400/10 rounded-lg"
+                  variants={itemVariants}
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <FaDownload className="mr-3 transition-transform group-hover:-translate-y-0.5" />
+                  <span className="font-semibold">[ Download my CV ]</span>
+                </motion.a>
+              </div>
             </div>
           </div>
-
-          {/* HERO IMAGE */}
-          <div className="relative xm:mt-0 lg:mt-12">
-            <img
-              src={hero1}
-              alt="Hero"
-              loading="lazy"
-              className="
-                rounded-[10px] 
-                w-full 
-                max-w-7xl 
-                h-auto 
-                sm:h-60   
-                md:h-60   
-                lg:h-80
-                object-cover
-              "
-            />
-          </div>
-        </div>
-
-        {/* RIGHT SIDE (CardSwap for desktop only) */}
-        <div className="w-full lg:w-1/3 hidden lg:flex  items-end justify-end ">
-          <CardSwap
-            width={950}
-            height={650}
-            cardDistance={40}
-            verticalDistance={89}
-            delay={3000}
-            pauseOnHover={false}
-          >
-            {/* Card 1 */}
-            <Card className="bg-white shadow-lg p-10 border-4 border-[#CFFFF5] border-b-0">
-              <h3 className="text-2xl font-bold text-black mb-3">Design</h3>
-              <p className="text-[#757575] text-[20px] leading-[28px] mb-3">
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                accusantium.
-              </p>
-              <img
-                src={hero2}
-                alt="Hero"
-                loading="lazy"
-                className="mt-3 w-full max-w-4xl h-[87%] object-cover"
-              />
-            </Card>
-
-            {/* Card 2 */}
-            <Card className="bg-white shadow-lg p-10 border-4 border-[#FFF6D2] border-b-0">
-              <h3 className="text-2xl font-bold text-black mb-3">
-                Development
-              </h3>
-              <p className="text-[#757575] text-[20px] leading-[28px] mb-3">
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                accusantium.
-              </p>
-              <img
-                src={hero3}
-                alt="Hero"
-                loading="lazy"
-                className="mt-3 w-full max-w-4xl h-[88%] object-cover"
-              />
-            </Card>
-
-            {/* Card 3 */}
-            <Card className="bg-white shadow-lg p-10 border-4 border-[#F5CDFF] border-b-0">
-              <h3 className="text-2xl font-bold text-black mb-3">
-                Development
-              </h3>
-              <p className="text-[#757575] text-[20px] leading-[28px] mb-3">
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                accusantium.
-              </p>
-              <img
-                src={hero4}
-                alt="Hero"
-                loading="lazy"
-                className="mt-3 w-full max-w-4xl h-[88%] object-cover"
-              />
-            </Card>
-          </CardSwap>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
-}
+};
+
+export default Hero;
