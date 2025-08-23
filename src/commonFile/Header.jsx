@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { FaCode, FaGithub, FaLinkedinIn } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
+import { FaCode, FaGithub, FaLinkedinIn, FaTwitter } from "react-icons/fa";
 import { FiMenu, FiX, FiSun } from "react-icons/fi";
 
 const Navbar = () => {
@@ -57,7 +56,7 @@ const Navbar = () => {
           <div className="flex items-center space-x-4">
             <div className="hidden md:flex items-center space-x-5 pr-2">
               <a href="#" aria-label="X/Twitter" className="hover:text-white">
-                <FaXTwitter size={18} />
+                <FaTwitter  size={18} />
               </a>
               <a href="#" aria-label="LinkedIn" className="hover:text-white">
                 <FaLinkedinIn size={18} />
@@ -89,7 +88,7 @@ const Navbar = () => {
               {/* Social links for mobile */}
               <div className="flex items-center space-x-5 pt-4 justify-center">
                 <a href="#" aria-label="X/Twitter" className="hover:text-white">
-                  <FaXTwitter size={20} />
+                  <FaTwitter  size={20} />
                 </a>
                 <a href="#" aria-label="LinkedIn" className="hover:text-white">
                   <FaLinkedinIn size={20} />
