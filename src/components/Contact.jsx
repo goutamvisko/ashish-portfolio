@@ -1,87 +1,136 @@
 import React from 'react';
-import { FaPhone, FaEnvelope, FaSkype, FaMapMarkerAlt } from 'react-icons/fa';
+import { motion } from 'framer-motion';
+import { Phone, Mail, MapPin, Send } from 'lucide-react';
 
-const Contact = ({id}) => {
+// Contact Info Data
+const contactInfo = [
+  {
+    icon: <Phone size={24} />,
+    title: "Phone Number",
+    detail: "+1-234-567-8901",
+  },
+  {
+    icon: <Mail size={24} />,
+    title: "Email Address",
+    detail: "contact@goutam.dev",
+  },
+  {
+    icon: <MapPin size={24} />,
+    title: "Address",
+    detail: "0811 Erdman Prairie, Joaville CA",
+  },
+];
+
+// Reusable component for each contact info card
+const ContactInfoCard = ({ icon, title, detail }) => (
+  <motion.div
+    variants={{
+      hidden: { opacity: 0, x: -50 },
+      visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
+    }}
+    className="flex items-center gap-4 p-4 bg-white/5 rounded-lg border border-white/10"
+  >
+    <div className="text-purple-400">{icon}</div>
+    <div>
+      <p className="text-gray-400 text-sm">{title}</p>
+      <p className="text-white font-semibold">{detail}</p>
+    </div>
+  </motion.div>
+);
+
+export default function Contact({ id }) {
+  // Main container variants for staggering
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2, delayChildren: 0.3 },
+    },
+  };
+
+  // Variants for individual form items
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100 } },
+  };
+
   return (
-    <section className="bg-[#1e1e1e] py-6 px-4 sm:px-6 lg:px-8" id={id}>
-      <div className="max-w-7xl mx-auto">
-        <div className="text-left mb-5">
-          <h2 className="text-3xl md:text-4xl font-bold  text-green-400 text-center md:text-left">Let's connect</h2>
-        </div>
-        <div className="flex flex-col md:flex-row gap-12">
-          <div className="w-full md:w-7/10">
-            <form>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <input
-                  type="text"
-                  placeholder="Your name"
-                  className="bg-transparent border border-gray-600 rounded-md py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-green-400"
-                />
-                <input
-                  type="text"
-                  placeholder="Phone"
-                  className="bg-transparent border border-gray-600 rounded-md py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-green-400"
-                />
-                <input
-                  type="email"
-                  placeholder="Email"
-                  className="bg-transparent border border-gray-600 rounded-md py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-green-400"
-                />
-                <input
+    <section id={id} className="bg-[#121212] font-sans text-white py-20 md:py-28">
+      <motion.div
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1 }}
+        variants={containerVariants}
+      >
+        {/* Header */}
+        <motion.div className="text-center mb-16" variants={itemVariants}>
+          <p className="font-mono text-purple-400 mb-2">[ Get in Touch ]</p>
+          <h2 className="text-4xl sm:text-5xl font-extrabold">
+            Contact <span className="text-gradient">Me</span>
+          </h2>
+        </motion.div>
+        
+        {/* Main Content Card */}
+        <div className="bg-white/5 p-6 sm:p-8 lg:p-12 rounded-2xl border border-white/10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            
+            {/* Left Side: Contact Info */}
+            <motion.div
+              className="flex flex-col gap-6"
+              variants={{ visible: { transition: { staggerChildren: 0.2 } } }}
+            >
+              <motion.h3 className="text-2xl font-bold mb-2" variants={itemVariants}>
+                Let's Talk
+              </motion.h3>
+              {contactInfo.map((info, index) => (
+                <ContactInfoCard key={index} {...info} />
+              ))}
+            </motion.div>
+
+            {/* Right Side: Contact Form */}
+            <motion.div
+              variants={{ visible: { transition: { staggerChildren: 0.15 } } }}
+            >
+              <form>
+                <motion.div className="grid grid-cols-1 sm:grid-cols-2 gap-6" variants={itemVariants}>
+                  <input
+                    type="text"
+                    placeholder="Your Name"
+                    className="w-full bg-white/5 p-4 rounded-lg border border-white/10 focus:ring-2 focus:ring-purple-500 focus:outline-none transition-all duration-300"
+                  />
+                  <input
+                    type="email"
+                    placeholder="Your Email"
+                    className="w-full bg-white/5 p-4 rounded-lg border border-white/10 focus:ring-2 focus:ring-purple-500 focus:outline-none transition-all duration-300"
+                  />
+                </motion.div>
+                <motion.input
                   type="text"
                   placeholder="Subject"
-                  className="bg-transparent border border-gray-600 rounded-md py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-green-400"
+                  className="w-full bg-white/5 p-4 mt-6 rounded-lg border border-white/10 focus:ring-2 focus:ring-purple-500 focus:outline-none transition-all duration-300"
+                  variants={itemVariants}
                 />
-              </div>
-              <textarea
-                placeholder="Message"
-                rows="6"
-                className="w-full bg-transparent border border-gray-600 rounded-md py-3 px-4 mt-6 text-white focus:outline-none focus:ring-2 focus:ring-green-400"
-              ></textarea>
-            </form>
-          </div>
-          <div className="w-full md:w-3/10 flex flex-col gap-6">
-            <div className="flex items-center gap-4">
-              <div className="bg-gray-800 p-3 rounded-md">
-                <FaPhone className="text-green-400 text-xl" />
-              </div>
-              <div>
-                <p className="text-gray-400">Phone Number</p>
-                <p className="text-white font-semibold">+1-234-567-8901</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-4">
-              <div className="bg-gray-800 p-3 rounded-md">
-                <FaEnvelope className="text-green-400 text-xl" />
-              </div>
-              <div>
-                <p className="text-gray-400">Email</p>
-                <p className="text-white font-semibold">contact@william.design</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-4">
-              <div className="bg-gray-800 p-3 rounded-md">
-                <FaSkype className="text-green-400 text-xl" />
-              </div>
-              <div>
-                <p className="text-gray-400">Skype</p>
-                <p className="text-white font-semibold">WilliamDesignUX</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-4">
-              <div className="bg-gray-800 p-3 rounded-md">
-                <FaMapMarkerAlt className="text-green-400 text-xl" />
-              </div>
-              <div>
-                <p className="text-gray-400">Address</p>
-                <p className="text-white font-semibold">0811 Erdman Prairie, Joaville CA</p>
-              </div>
-            </div>
+                <motion.textarea
+                  placeholder="Your Message"
+                  rows="5"
+                  className="w-full bg-white/5 p-4 mt-6 rounded-lg border border-white/10 focus:ring-2 focus:ring-purple-500 focus:outline-none transition-all duration-300"
+                  variants={itemVariants}
+                ></motion.textarea>
+                <motion.button
+                  type="submit"
+                  className="mt-6 w-full inline-flex items-center justify-center text-white font-semibold px-8 py-4 rounded-lg group animate-gradient-border"
+                  variants={itemVariants}
+                >
+                  <span className="transition-all duration-300 group-hover:tracking-wider flex items-center gap-2">
+                    Send Message <Send size={18} />
+                  </span>
+                </motion.button>
+              </form>
+            </motion.div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
-};
-
-export default Contact;
+}

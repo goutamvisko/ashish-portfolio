@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FaNodeJs, FaDownload, FaCode } from "react-icons/fa";
+import { FaNodeJs, FaDownload } from "react-icons/fa";
 import {
   SiNextdotjs,
   SiFirebase,
@@ -10,9 +10,9 @@ import {
   SiLaravel,
 } from "react-icons/si";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from 'swiper/modules';
+import { Autoplay } from "swiper/modules";
 
-
+// Swiper styles
 import "swiper/css";
 import "swiper/css/autoplay";
 
@@ -20,131 +20,180 @@ const profileImageUrl =
   "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=774&q=80";
 
 const Hero = () => {
-  const sectionVariants = {
+  const containerVariants = {
     hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.2, duration: 0.5 } },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2, delayChildren: 0.3 },
+    },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeInOut" } },
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { type: "spring", stiffness: 100 },
+    },
   };
 
   const imageVariants = {
-    hidden: { opacity: 0, scale: 0.8, rotate: -10 },
-    visible: { opacity: 1, scale: 1, rotate: 0, transition: { duration: 0.8, ease: "easeOut" } },
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        type: "spring",
+        stiffness: 120,
+        damping: 10,
+        delay: 0.5,
+      },
+    },
+    floating: {
+      y: ["-8px", "8px"],
+      transition: {
+        duration: 3,
+        repeat: Infinity,
+        repeatType: "reverse",
+        ease: "easeInOut",
+      },
+    },
   };
 
   const techIcons = [
-    { icon: <FaNodeJs size={28} className="text-gray-300" />, name: "Node.js" },
-    { icon: <SiTailwindcss size={28} className="text-gray-300" />, name: "Tailwind" },
-    { icon: <SiNextdotjs size={28} className="text-gray-300" />, name: "Next.js" },
-    { icon: <SiFirebase size={28} className="text-gray-300" />, name: "Firebase" },
-    { icon: <SiMongodb size={28} className="text-gray-300" />, name: "MongoDB" },
-    { icon: <SiReact size={28} className="text-gray-300" />, name: "React" },
-    { icon: <SiLaravel size={28} className="text-gray-300" />, name: "Laravel" },
-    { icon: <SiFirebase size={28} className="text-gray-300" />, name: "Firebase" },
-    { icon: <SiMongodb size={28} className="text-gray-300" />, name: "MongoDB" },
-    { icon: <SiReact size={28} className="text-gray-300" />, name: "React" },
-    { icon: <SiLaravel size={28} className="text-gray-300" />, name: "Laravel" },
+    { icon: <FaNodeJs size={28} />, name: "Node.js" },
+    { icon: <SiTailwindcss size={28} />, name: "Tailwind" },
+    { icon: <SiNextdotjs size={28} />, name: "Next.js" },
+    { icon: <SiFirebase size={28} />, name: "Firebase" },
+    { icon: <SiMongodb size={28} />, name: "MongoDB" },
+    { icon: <SiReact size={28} />, name: "React" },
+    { icon: <SiLaravel size={28} />, name: "Laravel" },
+    { icon: <FaNodeJs size={28} />, name: "Node.js" },
+    { icon: <SiTailwindcss size={28} />, name: "Tailwind" },
+    { icon: <SiNextdotjs size={28} />, name: "Next.js" },
+    { icon: <SiFirebase size={28} />, name: "Firebase" },
   ];
 
   return (
     <motion.section
-      className="bg-[#1e1e1e] font-mono"
-      variants={sectionVariants}
+      className="bg-[#121212] font-sans text-white min-h-screen flex items-center"
+      variants={containerVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
+      viewport={{ once: true, amount: 0.1 }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-0 py-6">
-        <div className="animate-gradient-border rounded-2xl p-0.5">
-          <div className="bg-[#2a2a30] text-white relative overflow-hidden rounded-2xl p-6 sm:p-8 md:p-10 lg:p-12">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+      {/* Clip Path for Blob Shape */}
+      <svg width="0" height="0" className="absolute">
+        <defs>
+          <clipPath id="blobClip" clipPathUnits="objectBoundingBox">
+            <path d="M0.776,0.852 C0.721,0.963,0.598,1,0.5,1 C0.402,1,0.279,0.963,0.224,0.852 C0.14,0.681,0.02,0.598,0.005,0.5 C-0.01,0.402,0.061,0.24,0.148,0.148 C0.235,0.056,0.402,0,0.5,0 C0.598,0,0.765,0.056,0.852,0.148 C0.939,0.24,1.01,0.402,0.995,0.5 C0.98,0.598,0.86,0.681,0.776,0.852 Z" />
+          </clipPath>
+        </defs>
+      </svg>
 
-              {/* Image Section */}
-              <motion.div
-                className="w-full mx-auto order-1 md:order-2"
-                variants={imageVariants}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 sm:py-5 lg:py-5 mt-20">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-center">
+          {/* Text Section */}
+          <div className="lg:col-span-3 text-center lg:text-left">
+            <motion.p
+              className="mb-3 text-gray-400 font-mono text-sm sm:text-base"
+              variants={itemVariants}
+            >
+              <span className="text-purple-400">&lt;p&gt;</span> Hey, I'm Goutam{" "}
+              <span className="text-purple-400">&lt;/p&gt;</span>
+            </motion.p>
+
+            <motion.h1
+              className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-tight mb-6"
+              variants={itemVariants}
+            >
+              Creative Python & AI/ML
+              <span className="text-gradient"> Developer</span>
+            </motion.h1>
+
+            <motion.p
+              className="mb-8 text-gray-400 max-w-xl mx-auto lg:mx-0 text-base sm:text-lg"
+              variants={itemVariants}
+            >
+              I build elegant, responsive, and high-performance web applications
+              from concept to launch.
+            </motion.p>
+
+            <motion.div variants={itemVariants}>
+              <a
+                href="#download-cv"
+                className="inline-flex items-center text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 transition-all duration-300 rounded-lg group animate-gradient-border text-sm sm:text-base"
               >
-                <div
-                  className="relative w-full h-72 sm:h-96 md:h-[400px] lg:h-[450px] "
-                  style={{
-                    clipPath:
-                      "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
-                  }}
-                >
-                  <img
-                    src={profileImageUrl}
-                    alt="Goutam - Full Stack Developer"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </motion.div>
+                <FaDownload className="mr-3 transition-transform group-hover:-translate-y-0.5" />
+                <span>[ Download my CV ]</span>
+              </a>
+            </motion.div>
+          </div>
 
-              {/* Text Section */}
-              <div className="text-center md:text-left order-2 md:order-1">
-                <motion.p className="mb-4 text-gray-400" variants={itemVariants}>
-                  <span className="text-pink-500">&lt;span&gt;</span> Hey, I'm Goutam{" "}
-                  <span className="text-pink-500">&lt;/span&gt;</span>
-                </motion.p>
-                <motion.h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4" variants={itemVariants}>
-                  Senior &#123;Full <br className="hidden sm:block" />
-                  <span className="text-green-400">Stack</span>&#125; Web & App <br className="hidden sm:block" />
-                  Developer
-                </motion.h1>
-                <motion.p className="mb-8 text-gray-400 max-w-md sm:max-w-lg md:max-w-xl mx-auto md:mx-0 leading-relaxed" variants={itemVariants}>
-                  <span className="text-pink-500">&lt;p&gt;</span>
-                  With expertise in cutting-edge tech like <span className="text-red-400">React</span>, <span className="text-red-400">NodeJS</span>, and <span className="text-red-400">Laravel</span>, I deliver innovative and robust web solutions.
-                  <span className="text-pink-500">&lt;/p&gt;</span>
-                </motion.p>
+          {/* Image Section */}
+          <motion.div
+            className="lg:col-span-2 w-full max-w-xs sm:max-w-sm mx-auto lg:max-w-md"
+            variants={imageVariants}
+            animate="floating"
+          >
+            <motion.div
+              className="relative w-full h-64 sm:h-80 lg:h-96"
+              style={{ clipPath: "url(#blobClip)" }}
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <img
+                src={profileImageUrl}
+                alt="Goutam - Full Stack Developer"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-indigo-500/20 mix-blend-color"></div>
+            </motion.div>
+          </motion.div>
+        </div>
 
-                {/* Tech Stack Slider */}
-                <motion.div className="mb-10" variants={itemVariants}>
-                  <Swiper
-                    modules={[Autoplay]}
-                    slidesPerView={2}
-                    spaceBetween={10}
-                    loop={true}
-                    autoplay={{ delay: 2000, disableOnInteraction: false }}
-                    breakpoints={{
-                      320: { slidesPerView: 2, spaceBetween: 10 },
-                      480: { slidesPerView: 3, spaceBetween: 12 },
-                      640: { slidesPerView: 4, spaceBetween: 15 },
-                      768: { slidesPerView: 5, spaceBetween: 18 },
-                      1024: { slidesPerView: 6, spaceBetween: 20 },
-                      1280: { slidesPerView: 7, spaceBetween: 25 },
+        {/* Tech Slider */}
+        {/* Tech Slider */}
+        <motion.div
+          className="mt-16 sm:mt-20 lg:mt-28 flex justify-center"
+          variants={itemVariants}
+        >
+          <div className="w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-4xl">
+            <motion.p
+              className="font-mono text-purple-400 mb-3 text-center"
+              variants={itemVariants}
+            >
+              [ My Tech Stack ]
+            </motion.p>
+            <Swiper
+              modules={[Autoplay]}
+              loop={true}
+              autoplay={{ delay: 2000, disableOnInteraction: false }}
+              breakpoints={{
+                320: { slidesPerView: 3, spaceBetween: 12 },
+                480: { slidesPerView: 4, spaceBetween: 16 },
+                640: { slidesPerView: 5, spaceBetween: 20 },
+                768: { slidesPerView: 6, spaceBetween: 20 },
+                1024: { slidesPerView: 7, spaceBetween: 24 },
+              }}
+              className="opacity-90"
+            >
+              {techIcons.map((tech, index) => (
+                <SwiperSlide key={index}>
+                  <motion.div
+                    className="flex items-center justify-center p-4 rounded-2xl bg-white/5 w-20 sm:w-24 md:w-28 lg:w-32"
+                    whileHover={{
+                      scale: 1.1,
+                      backgroundColor: "rgba(255,255,255,0.1)",
                     }}
                   >
-                    {techIcons.map((tech, index) => (
-                      <SwiperSlide key={index}>
-                        <motion.div
-                          className="p-3 border border-gray-600/50 rounded-lg flex items-center justify-center"
-                          whileHover={{ scale: 1.1, backgroundColor: "#3a3a40" }}
-                          transition={{ type: "spring", stiffness: 400 }}
-                        >
-                          {tech.icon}
-                        </motion.div>
-                      </SwiperSlide>
-                    ))}
-                  </Swiper>
-                </motion.div>...and more
-
-
-                <motion.a
-                  href="#download-cv"
-                  className="inline-flex items-center text-green-400 border border-green-400/50 px-5 sm:px-6 py-3 transition-colors group hover:bg-green-400/10 rounded-lg"
-                  variants={itemVariants}
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <FaDownload className="mr-3 transition-transform group-hover:-translate-y-0.5" />
-                  <span className="font-semibold">[ Download my CV ]</span>
-                </motion.a>
-              </div>
-            </div>
+                    {tech.icon}
+                  </motion.div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
-        </div>
+        </motion.div>
       </div>
     </motion.section>
   );

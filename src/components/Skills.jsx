@@ -1,160 +1,151 @@
 import React from "react";
 import { motion } from "framer-motion";
 import {
-  SiNodedotjs,
-  SiNextdotjs,
-  SiFirebase,
-  SiMongodb,
-  SiTailwindcss,
-  SiVuedotjs,
-  SiAngular,
-  SiLaravel,
-  SiDocker,
-  SiHeroku,
-  SiGraphql,
-  SiMysql,
-  SiPostgresql,
-  SiGit,
-  SiPython,
-  SiDjango,
+  SiReact, SiNextdotjs, SiTailwindcss, SiVuedotjs,
+  SiNodedotjs, SiPython, SiDjango, SiLaravel,
+  SiMongodb, SiMysql, SiPostgresql, SiFirebase,
+  SiDocker, SiGit, SiGraphql
 } from "react-icons/si";
 import { FaAws } from "react-icons/fa";
-import { Code, Server, Database, Settings } from "lucide-react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
 
-export default function Skills({ id }) {
-  const skills = [
-    { icon: <SiNodedotjs size={36} />, label: "Node.js" },
-    { icon: <SiNextdotjs size={36} />, label: "Next.js" },
-    { icon: <SiFirebase size={36} />, label: "Firebase" },
-    { icon: <SiMongodb size={36} />, label: "MongoDB" },
-    { icon: <SiTailwindcss size={36} />, label: "TailwindCSS" },
-    { icon: <SiVuedotjs size={36} />, label: "Vue" },
-    { icon: <SiAngular size={36} />, label: "Angular" },
-    { icon: <SiLaravel size={36} />, label: "Laravel" },
-    { icon: <FaAws size={36} />, label: "AWS" },
-    { icon: <SiHeroku size={36} />, label: "Heroku" },
-    { icon: <SiGraphql size={36} />, label: "GraphQL" },
-    { icon: <SiMysql size={36} />, label: "MySQL" },
-    { icon: <SiPostgresql size={36} />, label: "PostgreSQL" },
-    { icon: <SiGit size={36} />, label: "Git" },
-    { icon: <SiPython size={36} />, label: "Python" },
-    { icon: <SiDjango size={36} />, label: "Django" },
-    { icon: <SiDocker size={36} />, label: "Docker" },
-  ];
+import { Code, Server, Database, Settings } from "lucide-react";
+
+// Structured skill data by category
+const skillCategories = [
+  {
+    title: "Frontend",
+    icon: <Code className="w-6 h-6" />,
+    skills: [
+      { icon: <SiReact size={28} />, name: "React" },
+      { icon: <SiNextdotjs size={28} />, name: "Next.js" },
+      { icon: <SiVuedotjs size={28} />, name: "Vue.js" },
+      { icon: <SiTailwindcss size={28} />, name: "Tailwind CSS" },
+    ],
+  },
+  {
+    title: "Backend",
+    icon: <Server className="w-6 h-6" />,
+    skills: [
+      { icon: <SiNodedotjs size={28} />, name: "Node.js" },
+      { icon: <SiPython size={28} />, name: "Python" },
+      { icon: <SiDjango size={28} />, name: "Django" },
+      { icon: <SiLaravel size={28} />, name: "Laravel" },
+      { icon: <SiGraphql size={28} />, name: "GraphQL" },
+    ],
+  },
+  {
+    title: "Databases",
+    icon: <Database className="w-6 h-6" />,
+    skills: [
+      { icon: <SiMongodb size={28} />, name: "MongoDB" },
+      { icon: <SiMysql size={28} />, name: "MySQL" },
+      { icon: <SiPostgresql size={28} />, name: "PostgreSQL" },
+      { icon: <SiFirebase size={28} />, name: "Firebase" },
+    ],
+  },
+  {
+    title: "DevOps & Tools",
+    icon: <Settings className="w-6 h-6" />,
+    skills: [
+      { icon: <SiDocker size={28} />, name: "Docker" },
+      { icon: <FaAws size={28} />, name: "AWS" },
+      { icon: <SiGit size={28} />, name: "Git" },
+    ],
+  },
+];
+
+// Reusable component for each skill category pod
+const SkillCategory = ({ title, icon, skills }) => {
+  const listVariants = {
+    visible: { transition: { staggerChildren: 0.05 } },
+    hidden: {},
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, scale: 0.5 },
+    visible: { opacity: 1, scale: 1 },
+  };
 
   return (
-    <section
-      id={id}
-      className="bg-[#1e1e1e] py-6 px-6 md:px-12 flex justify-center font-mono"
+    <motion.div
+      variants={{
+        hidden: { opacity: 0, y: 50 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+      }}
+      whileHover={{ y: -5, transition: { duration: 0.2 } }}
+      className="p-6 bg-white/5 rounded-2xl border border-white/10"
     >
+      <div className="flex items-center gap-4 mb-6">
+        <span className="text-purple-400">{icon}</span>
+        <h3 className="text-xl font-bold text-white">{title}</h3>
+      </div>
       <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true, amount: 0.2 }}
-        className="w-full max-w-7xl"
+        className="grid grid-cols-3 sm:grid-cols-4 gap-4"
+        variants={listVariants}
       >
-        <div className="animate-gradient-border p-[2px] rounded-2xl">
-          <div className="bg-[#2a2a30] rounded-2xl p-8 md:p-12 flex flex-col gap-10">
-            {/* Header */}
-            <div className="text-center">
-              <p className="text-green-400 text-sm font-medium mb-2">
-                • Technical Skills 
-              </p>
-              <h2 className="text-3xl md:text-4xl font-bold text-white">
-                My Core Technologies
-              </h2>
+        {skills.map((skill) => (
+          <motion.div
+            key={skill.name}
+            variants={itemVariants}
+            className="flex flex-col items-center justify-center text-center p-2"
+          >
+            <div className="text-gray-300 transition-colors hover:text-white">
+              {skill.icon}
             </div>
-
-            {/* Content Section */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12">
-              {/* Left: Swiper Slider */}
-              <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                viewport={{ once: true }}
-                className="w-full "
-              >
-                <Swiper
-                  modules={[Autoplay, Navigation]}
-                  loop={true} 
-                  autoplay={{
-                    delay: 1500,
-                    disableOnInteraction: false, 
-                  }}
-                  // navigation // shows arrows for desktop
-                  spaceBetween={18}
-                  breakpoints={{
-                    320: { slidesPerView: 2 },
-                    480: { slidesPerView: 3 },
-                    640: { slidesPerView: 4 },
-                    768: { slidesPerView: 5 },
-                    1024: { slidesPerView: 6 },
-                    1280: { slidesPerView: 7 },
-                  }}
-                  className="w-full"
-                >
-                  {skills.map((skill, i) => (
-                    <SwiperSlide key={i}>
-                      <div className="flex flex-col items-center justify-center bg-[#3c3c43]/70 border border-gray-700/50 rounded-xl p-5  group transition-all duration-300 hover:border-gray-600 hover:-translate-y-1">
-                        <div className="text-gray-400 transition-colors group-hover:text-green-400">
-                          {skill.icon}
-                        </div>
-                        <p className="text-sm mt-3 text-gray-300 font-semibold">
-                          {skill.label}
-                        </p>
-                      </div>
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
-              </motion.div>
-
-              {/* Right: Text Summary */}
-              <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                viewport={{ once: true }}
-                className="text-gray-300 space-y-5 text-sm sm:text-base"
-              >
-                <p>
-                  <span className="flex items-center gap-2 text-white font-semibold mb-1">
-                    <Code className="w-4 h-4 text-green-400" /> Front-End:
-                  </span>
-                  Proficient in React, Angular, and Vue.js for building dynamic
-                  UIs.
-                </p>
-                <p>
-                  <span className="flex items-center gap-2 text-white font-semibold mb-1">
-                    <Server className="w-4 h-4 text-green-400" /> Back-End:
-                  </span>
-                  Experienced with Node.js, Express, Python, and Django for
-                  robust server-side logic.
-                </p>
-                <p>
-                  <span className="flex items-center gap-2 text-white font-semibold mb-1">
-                    <Database className="w-4 h-4 text-green-400" /> Databases:
-                  </span>
-                  Skilled in SQL (MySQL, PostgreSQL) and NoSQL (MongoDB)
-                  databases.
-                </p>
-                <p>
-                  <span className="flex items-center gap-2 text-white font-semibold mb-1">
-                    <Settings className="w-4 h-4 text-green-400" /> DevOps &
-                    Tools:
-                  </span>
-                  Utilizing Git, Docker, AWS & Heroku for deployment and CI/CD.
-                </p>
-              </motion.div>
-            </div>
-          </div>
-        </div>
+            <p className="text-xs mt-2 text-gray-400">{skill.name}</p>
+          </motion.div>
+        ))}
       </motion.div>
+    </motion.div>
+  );
+};
+
+export default function Skills({ id }) {
+  // Main container variants for staggering the category pods
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2 },
+    },
+  };
+
+  return (
+    <section id={id} className="bg-[#121212] font-sans text-white py-20 md:py-28">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Header */}
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: -30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true, amount: 0.5 }}
+        >
+          <p className="font-mono text-purple-400 mb-2">[ My Tech Arsenal ]</p>
+          <h2 className="text-4xl sm:text-5xl font-extrabold">
+            Technologies I <span className="text-gradient">Work With</span>
+          </h2>
+        </motion.div>
+
+        {/* Skills Grid */}
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 gap-8"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+        >
+          {skillCategories.map((category) => (
+            <SkillCategory
+              key={category.title}
+              title={category.title}
+              icon={category.icon}
+              skills={category.skills}
+            />
+          ))}
+        </motion.div>
+      </div>
     </section>
   );
 }

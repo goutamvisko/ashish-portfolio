@@ -2,11 +2,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FaFacebookF, FaLinkedinIn, FaGithub } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
-import { LuArrowUp } from 'react-icons/lu';
-import { FaCode } from 'react-icons/fa';
+import { ArrowUp } from 'lucide-react';
 
 const Footer = () => {
-  // Animation variants
+  // Animation variants for the main container
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -15,89 +14,83 @@ const Footer = () => {
     },
   };
 
+  // Variants for individual items
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
   };
 
   const socialIcons = [
-    { href: "#", icon: <FaFacebookF size={18} /> },
-    { href: "#", icon: <FaXTwitter size={18} /> },
-    { href: "#", icon: <FaLinkedinIn size={18} /> },
-    { href: "#", icon: <FaGithub size={18} /> },
+    { href: "#", icon: <FaFacebookF size={18} />, name: "Facebook" },
+    { href: "#", icon: <FaXTwitter size={18} />, name: "Twitter" },
+    { href: "#", icon: <FaLinkedinIn size={18} />, name: "LinkedIn" },
+    { href: "#", icon: <FaGithub size={18} />, name: "GitHub" },
   ];
 
-  const navLinks = ["About me", "Services", "Portfolio", "Contact"];
-  
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <footer className="relative bg-[#1e1e1e] text-white py-10 px-6 md:px-12 font-mono">
-      {/* Animated Gradient Border (Top Only) */}
-      <div className="absolute top-0 mt-5 left-0 w-full h-1 animate-gradient-border"></div>
-
-      <motion.div 
-        className="max-w-7xl mx-auto flex flex-col items-center text-center"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-        variants={containerVariants}
-      >
-        
-        {/* Logo */}
-        <motion.div className="flex items-center mb-6" variants={itemVariants}>
-          <FaCode className="text-green-400 text-4xl mr-2" />
-          <span className="text-2xl font-bold">Goutam.dev</span>
-        </motion.div>
-
-        {/* Social Media Icons */}
-        <motion.div className="flex space-x-6 mb-8" variants={itemVariants}>
-          {socialIcons.map((social, index) => (
-            <a 
-              key={index} 
-              href={social.href} 
-              className="text-gray-400 hover:text-green-400 hover:scale-110 transition-all duration-300"
-              aria-label={social.icon.type.name}
-            >
-              {social.icon}
-            </a>
-          ))}
-        </motion.div>
-
-        {/* Navigation Links */}
-        <motion.nav 
-          className="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-10 font-mono text-gray-400"
-          variants={itemVariants}
+    <>
+      <footer className="bg-[#121212] font-sans text-white pt-20 pb-8 px-4 sm:px-6 lg:px-8">
+        <motion.div
+          className="max-w-7xl mx-auto"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={containerVariants}
         >
-          {navLinks.map((link) => (
-             <a key={link} href="#" className="hover:text-white transition-colors">{link}</a>
-          ))}
-        </motion.nav>
-        
-        {/* Copyright */}
-        <motion.p className="text-gray-500 text-sm" variants={itemVariants}>
-          © {new Date().getFullYear()} Goutam.dev. All Rights Reserved.
-        </motion.p>
-      </motion.div>
+          {/* Top Section: Call to Action and Socials */}
+          <div className="flex flex-col md:flex-row justify-between items-center gap-10 pb-16">
+            <motion.div className="text-center md:text-left" variants={itemVariants}>
+              <h2 className="text-3xl sm:text-4xl font-extrabold mb-2">
+                Let's Build The <span className="text-gradient">Future</span>
+              </h2>
+              <p className="text-gray-400">
+                Ready to start a project? Let's create something amazing together.
+              </p>
+            </motion.div>
+            
+            <motion.div className="flex space-x-5" variants={itemVariants}>
+              {socialIcons.map((social) => (
+                <a
+                  key={social.name}
+                  href={social.href}
+                  className="w-12 h-12 flex items-center justify-center bg-white/5 border border-white/10 rounded-full text-gray-300 transition-all duration-300 hover:bg-white/10 hover:text-white hover:scale-110"
+                  aria-label={social.name}
+                >
+                  {social.icon}
+                </a>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* Bottom Section: Copyright */}
+          <motion.div 
+            className="border-t border-white/10 pt-8 text-center"
+            variants={itemVariants}
+          >
+            <p className="text-gray-500 text-sm font-mono">
+              © {new Date().getFullYear()} Goutam.dev | All Rights Reserved
+            </p>
+          </motion.div>
+        </motion.div>
+      </footer>
 
       {/* Scroll to top button */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0 }}
+      <motion.button
+        onClick={scrollToTop}
+        className="fixed bottom-6 right-6 w-12 h-12 flex items-center justify-center bg-white/10 border border-white/20 rounded-full text-white backdrop-blur-sm transition-all duration-300 hover:bg-purple-500/50 group"
+        aria-label="Scroll to top"
+        initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5, delay: 1 }}
-        className="fixed bottom-6 right-6"
+        transition={{ duration: 0.5, delay: 1, ease: "easeOut" }}
+        whileHover={{ scale: 1.1, rotate: 360 }}
       >
-        <button 
-          onClick={scrollToTop}
-          className="bg-[#2a2a30] border border-gray-700/50 hover:border-green-400/50 text-gray-300 hover:text-green-400 p-3 rounded-lg shadow-lg transition-all duration-300"
-          aria-label="Scroll to top"
-        >
-          <LuArrowUp size={22} />
-        </button>
-      </motion.div>
-    </footer>
+        <ArrowUp size={22} className="transition-transform duration-300 group-hover:-translate-y-0.5" />
+      </motion.button>
+    </>
   );
 };
 

@@ -1,117 +1,124 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { BookOpen, FlaskConical } from "lucide-react";
+import React, { useRef } from "react";
 
-export default function Education({ id }) {
-  // Animation variants for the main container to stagger the two cards
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.3, duration: 0.5 },
-    },
-  };
+const timelineData = [
+  {
+    type: "education",
+    year: "2020-2024",
+    title: "MIT",
+    description: "Bachelor’s Degree in Computer Science",
+  },
+  {
+    type: "research",
+    year: "2023-2024",
+    title: "Advanced Data Analytics with Big Data Tools",
+    description: "Utilized big data tools for advanced analytics and insights.",
+  },
+  {
+    type: "research",
+    year: "2021-2023",
+    title: "Cloud-Native Application Architectures",
+    description: "Studied best practices for designing cloud-native applications.",
+  },
+  {
+    type: "education",
+    year: "2018-2019",
+    title: "Harvard University",
+    description: "Certification in React & Node.js",
+  },
+  {
+    type: "research",
+    year: "2019-2020",
+    title: "AI-Driven User Experience Personalization",
+    description: "Leveraged AI to personalize user experiences based on behavior.",
+  },
+  {
+    type: "education",
+    year: "2015-2016",
+    title: "Stanford University",
+    description: "Certification in Full Stack Web Development",
+  },
+];
 
-  // Variants for each card
-  const cardVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.7 } },
-  };
+const TimelineItem = ({ item }) => {
+  const itemRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: itemRef,
+    offset: ["start end", "end center"],
+  });
 
-  // Stagger animation for the list items inside each card
-  const listVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.15, delayChildren: 0.3 },
-    },
-  };
-
-  const listItemVariants = {
-    hidden: { opacity: 0, x: -20 },
-    visible: { opacity: 1, x: 0 },
-  };
-
-  const educationData = [
-    { year: "2020-2024", institution: "MIT", degree: "Bachelor’s Degree in Computer Science" },
-    { year: "2018-2019", institution: "Harvard University", degree: "Certification in React & Node.js" },
-    { year: "2015-2016", institution: "Stanford University", degree: "Certification in Full Stack Web Development" },
-  ];
-
-  const researchData = [
-    { year: "2023-2024", title: "Advanced Data Analytics with Big Data Tools", description: "Utilized big data tools for advanced analytics and insights." },
-    { year: "2021-2023", title: "Cloud-Native Application Architectures", description: "Studied best practices for designing cloud-native applications." },
-    { year: "2019-2020", title: "AI-Driven User Experience Personalization", description: "Leveraged AI to personalize user experiences based on behavior." },
-  ];
+  const scale = useTransform(scrollYProgress, [0, 1], [0.9, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 1], [0.4, 1]);
 
   return (
-    <section id={id} className="bg-[#1e1e1e] py-6 px-6 md:px-12 flex justify-center font-mono">
-      <div className="w-full max-w-7xl flex flex-col items-center">
+    <motion.div
+      ref={itemRef}
+      style={{ scale, opacity }}
+      className="flex justify-center w-full"
+    >
+      <motion.div
+        whileHover={{ y: -5, transition: { duration: 0.2 } }}
+        className="w-full md:w-2/3 lg:w-1/2 p-6 bg-white/5 rounded-2xl border border-white/10"
+      >
+        <div className="flex items-center gap-4 mb-3">
+          <span className="text-purple-400">
+            {item.type === "education" ? <BookOpen /> : <FlaskConical />}
+          </span>
+          <div className="flex-1">
+            <p className="text-xs text-gray-400 mb-1">{item.year}</p>
+            <h3 className="font-bold text-white">{item.title}</h3>
+          </div>
+        </div>
+        <p className="text-sm text-gray-300">{item.description}</p>
+      </motion.div>
+    </motion.div>
+  );
+};
+
+export default function Education({ id }) {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start center", "end center"],
+  });
+
+  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+
+  return (
+    <section
+      id={id}
+      className="bg-[#121212] font-sans text-white py-20 md:py-28"
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
-          className="text-center mb-12"
+          className="text-center mb-16"
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.5 }}
         >
-          <p className="text-green-400 text-sm font-medium mb-2">• My Journey </p>
-          <h2 className="text-3xl md:text-4xl font-bold text-white">Education & Research</h2>
+          <p className="font-mono text-purple-400 mb-2">[ My Journey ]</p>
+          <h2 className="text-4xl sm:text-5xl font-extrabold">
+            Education & <span className="text-gradient">Research</span>
+          </h2>
         </motion.div>
 
-        {/* Grid for the two cards */}
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-        >
-          {/* Education Card */}
-          <motion.div variants={cardVariants}>
-            <div className="animate-gradient-border rounded-2xl p-[2px] h-full">
-              <div className="bg-[#2a2a30] rounded-2xl p-8 h-full">
-                <div className="flex items-center mb-6">
-                  <BookOpen className="w-7 h-7 text-green-400 mr-3" />
-                  <h3 className="text-2xl font-bold text-white">Education</h3>
-                </div>
-                <motion.ul className="space-y-6" variants={listVariants}>
-                  {educationData.map((item, index) => (
-                    <motion.li key={index} className="relative pl-8" variants={listItemVariants}>
-                      <div className="absolute left-0 top-1 w-2.5 h-2.5 bg-green-400 rounded-full border-2 border-[#2a2a30]"></div>
-                      <div className="absolute left-[4px] top-5 h-[calc(100%_-_10px)] w-0.5 bg-gray-700/50 last:hidden"></div>
-                      <p className="text-xs text-gray-400 mb-1">{item.year}</p>
-                      <p className="font-semibold text-green-400">{item.institution}</p>
-                      <p className="text-sm text-gray-300">{item.degree}</p>
-                    </motion.li>
-                  ))}
-                </motion.ul>
-              </div>
-            </div>
-          </motion.div>
+        {/* Timeline Container */}
+        <div ref={containerRef} className="relative">
+          {/* Central animated line */}
+          <motion.div
+            className="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-purple-600 via-pink-500 to-purple-600"
+            style={{ height: lineHeight }}
+          />
 
-          {/* Research Card */}
-          <motion.div variants={cardVariants}>
-            <div className="animate-gradient-border rounded-2xl p-[2px] h-full">
-              <div className="bg-[#2a2a30] rounded-2xl p-8 h-full">
-                <div className="flex items-center mb-6">
-                  <FlaskConical className="w-7 h-7 text-green-400 mr-3" />
-                  <h3 className="text-2xl font-bold text-white">Research</h3>
-                </div>
-                <motion.ul className="space-y-6" variants={listVariants}>
-                  {researchData.map((item, index) => (
-                    <motion.li key={index} className="relative pl-8" variants={listItemVariants}>
-                      <div className="absolute left-0 top-1 w-2.5 h-2.5 bg-green-400 rounded-full border-2 border-[#2a2a30]"></div>
-                      <div className="absolute left-[4px] top-5 h-[calc(100%_-_10px)] w-0.5 bg-gray-700/50 last:hidden"></div>
-                      <p className="text-xs text-gray-400 mb-1">{item.year}</p>
-                      <p className="font-semibold text-green-400">{item.title}</p>
-                      <p className="text-sm text-gray-300">{item.description}</p>
-                    </motion.li>
-                  ))}
-                </motion.ul>
-              </div>
-            </div>
-          </motion.div>
-        </motion.div>
+          <div className="space-y-12 relative z-10">
+            {timelineData.map((item, index) => (
+              <TimelineItem key={index} item={item} />
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
