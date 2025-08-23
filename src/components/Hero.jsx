@@ -76,7 +76,7 @@ const Hero = () => {
                 >
                   <img
                     src={profileImageUrl}
-                    alt="James - Full Stack Developer"
+                    alt="Goutam - Full Stack Developer"
                     className="w-full h-full object-cover"
                   />
                 </div>
