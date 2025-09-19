@@ -1,23 +1,40 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FaNodeJs, FaDownload } from "react-icons/fa";
+import {  FaDownload } from "react-icons/fa";
 import {
-  SiNextdotjs,
-  SiFirebase,
-  SiMongodb,
   SiTailwindcss,
+  SiNextdotjs,
+  SiMongodb,
   SiReact,
-  SiLaravel,
+  SiMysql,
+  SiPostgresql,
+  SiApachecassandra,
+  SiJavascript,
+  SiVuedotjs,
+  SiRedis,
+  SiGooglecloud,
+  SiDocker,
+  SiKubernetes,
+  SiGit,
+  SiGithub,
+  SiGitlab,
+  SiJenkins,
+  SiNodedotjs,
+  SiBootstrap,
+  SiRedux ,
+  SiTypescript,
+  SiPhp ,
+  SiCodeigniter,
+  SiFirebase , 
 } from "react-icons/si";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 
 // Swiper styles
 import "swiper/css";
 import "swiper/css/autoplay";
-
-const profileImageUrl =
-  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=774&q=80";
+import img from "../assets/img/ashish.jpeg";
 
 const Hero = () => {
   const containerVariants = {
@@ -59,24 +76,44 @@ const Hero = () => {
       },
     },
   };
+const techIcons = [
+  // Frontend
+  { icon: <SiTailwindcss size={28} />, name: "TailwindCSS" },
+  { icon: <SiBootstrap size={28} />, name: "Bootstrap" },
+  { icon: <SiReact size={28} />, name: "React.js" },
+  { icon: <SiRedux size={28} />, name: "Redux" },
+  { icon: <SiVuedotjs size={28} />, name: "Vue.js" },
+  { icon: <SiNextdotjs size={28} />, name: "Next.js" },
+  { icon: <SiJavascript size={28} />, name: "JavaScript" },
+  { icon: <SiTypescript size={28} />, name: "TypeScript" },
 
-  const techIcons = [
-    { icon: <FaNodeJs size={28} />, name: "Node.js" },
-    { icon: <SiTailwindcss size={28} />, name: "Tailwind" },
-    { icon: <SiNextdotjs size={28} />, name: "Next.js" },
-    { icon: <SiFirebase size={28} />, name: "Firebase" },
-    { icon: <SiMongodb size={28} />, name: "MongoDB" },
-    { icon: <SiReact size={28} />, name: "React" },
-    { icon: <SiLaravel size={28} />, name: "Laravel" },
-    { icon: <FaNodeJs size={28} />, name: "Node.js" },
-    { icon: <SiTailwindcss size={28} />, name: "Tailwind" },
-    { icon: <SiNextdotjs size={28} />, name: "Next.js" },
-    { icon: <SiFirebase size={28} />, name: "Firebase" },
-  ];
+  // Backend
+  { icon: <SiNodedotjs size={28} />, name: "Node.js" },
+  { icon: <SiPhp size={28} />, name: "PHP" },
+  { icon: <SiCodeigniter size={28} />, name: "CodeIgniter" },
+
+  // Databases
+  { icon: <SiMysql size={28} />, name: "MySQL" },
+  { icon: <SiPostgresql size={28} />, name: "PostgreSQL" },
+  { icon: <SiMongodb size={28} />, name: "MongoDB" },
+  { icon: <SiFirebase size={28} />, name: "Firebase" },
+  { icon: <SiApachecassandra size={28} />, name: "Cassandra" },
+  { icon: <SiRedis size={28} />, name: "Redis" },
+
+  // DevOps & Tools
+  { icon: <SiGit size={28} />, name: "Git" },
+  { icon: <SiGithub size={28} />, name: "GitHub" },
+  { icon: <SiGitlab size={28} />, name: "GitLab" },
+  { icon: <SiJenkins size={28} />, name: "Jenkins" },
+  { icon: <SiDocker size={28} />, name: "Docker" },
+  { icon: <SiKubernetes size={28} />, name: "Kubernetes" },
+  { icon: <SiGooglecloud size={28} />, name: "GCP" },
+];
+
 
   return (
     <motion.section
-      className="bg-[#121212] font-sans text-white min-h-screen flex items-center"
+      className="bg-[#121212] font-sans text-white min-h-[90vh] flex items-center"
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
@@ -91,7 +128,7 @@ const Hero = () => {
         </defs>
       </svg>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 sm:py-5 lg:py-5 mt-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-35 md:py-30 lg:py-35">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-center">
           {/* Text Section */}
           <div className="lg:col-span-3 text-center lg:text-left">
@@ -99,7 +136,7 @@ const Hero = () => {
               className="mb-3 text-gray-400 font-mono text-sm sm:text-base"
               variants={itemVariants}
             >
-              <span className="text-purple-400">&lt;p&gt;</span> Hey, I'm Goutam{" "}
+              <span className="text-purple-400">&lt;p&gt;</span> Hey, I'm Ashish{" "}
               <span className="text-purple-400">&lt;/p&gt;</span>
             </motion.p>
 
@@ -107,7 +144,7 @@ const Hero = () => {
               className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-tight mb-6"
               variants={itemVariants}
             >
-              Creative Python & AI/ML
+              Sr. Full Stack
               <span className="text-gradient"> Developer</span>
             </motion.h1>
 
@@ -115,8 +152,10 @@ const Hero = () => {
               className="mb-8 text-gray-400 max-w-xl mx-auto lg:mx-0 text-base sm:text-lg"
               variants={itemVariants}
             >
-              I build elegant, responsive, and high-performance web applications
-              from concept to launch.
+             Innovative Full Stack Developer with a strong foundation in modern JavaScript ecosystems, 
+             backend frameworks, and cloud deployment. I specialize in transforming business requirements into scalable, 
+             high-performance applications that deliver real impact. With proven experience across frontend, backend, and DevOps, I thrive on solving complex problems,
+            streamlining workflows, and building digital products that combine functionality, performance, and user experience.
             </motion.p>
 
             <motion.div variants={itemVariants}>
@@ -143,16 +182,15 @@ const Hero = () => {
               transition={{ type: "spring", stiffness: 300 }}
             >
               <img
-                src={profileImageUrl}
+                src={img}
                 alt="Goutam - Full Stack Developer"
-                className="w-full h-full object-cover"
+                className="w-full h-full "
               />
               <div className="absolute inset-0 bg-indigo-500/20 mix-blend-color"></div>
             </motion.div>
           </motion.div>
         </div>
 
-        {/* Tech Slider */}
         {/* Tech Slider */}
         <motion.div
           className="mt-16 sm:mt-20 lg:mt-28 flex justify-center"

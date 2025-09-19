@@ -7,17 +7,17 @@ const contactInfo = [
   {
     icon: <Phone size={24} />,
     title: "Phone Number",
-    detail: "+1-234-567-8901",
+    detail: "+91-7987057932",
   },
   {
     icon: <Mail size={24} />,
     title: "Email Address",
-    detail: "contact@goutam.dev",
+    detail: "ashishfsdroot@gmail.com",
   },
   {
     icon: <MapPin size={24} />,
     title: "Address",
-    detail: "0811 Erdman Prairie, Joaville CA",
+    detail: "Indore, India",
   },
 ];
 
@@ -55,7 +55,7 @@ export default function Contact({ id }) {
   };
 
   return (
-    <section id={id} className="bg-[#121212] font-sans text-white py-20 md:py-28">
+    <section id={id} className="bg-[#121212] font-sans text-white py-5 md:py-10">
       <motion.div
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
         initial="hidden"

@@ -86,7 +86,7 @@ export default function Services({ id }) {
   };
 
   return (
-    <section id={id} className="bg-[#121212] font-sans text-white py-20 md:py-28">
+    <section id={id} className="bg-[#121212] font-sans text-white py-5 md:py-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}

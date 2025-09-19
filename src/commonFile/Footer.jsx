@@ -21,8 +21,6 @@ const Footer = () => {
   };
 
   const socialIcons = [
-    { href: "#", icon: <FaFacebookF size={18} />, name: "Facebook" },
-    { href: "#", icon: <FaXTwitter size={18} />, name: "Twitter" },
     { href: "#", icon: <FaLinkedinIn size={18} />, name: "LinkedIn" },
     { href: "#", icon: <FaGithub size={18} />, name: "GitHub" },
   ];
@@ -33,7 +31,7 @@ const Footer = () => {
 
   return (
     <>
-      <footer className="bg-[#121212] font-sans text-white pt-20 pb-8 px-4 sm:px-6 lg:px-8">
+      <footer className="bg-[#121212] font-sans text-white  pb-8 px-4 py-5 md:py-10">
         <motion.div
           className="max-w-7xl mx-auto"
           initial="hidden"
@@ -42,7 +40,7 @@ const Footer = () => {
           variants={containerVariants}
         >
           {/* Top Section: Call to Action and Socials */}
-          <div className="flex flex-col md:flex-row justify-between items-center gap-10 pb-16">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-10 pb-8">
             <motion.div className="text-center md:text-left" variants={itemVariants}>
               <h2 className="text-3xl sm:text-4xl font-extrabold mb-2">
                 Let's Build The <span className="text-gradient">Future</span>
@@ -72,7 +70,7 @@ const Footer = () => {
             variants={itemVariants}
           >
             <p className="text-gray-500 text-sm font-mono">
-              © {new Date().getFullYear()} Goutam.dev | All Rights Reserved
+              © {new Date().getFullYear()} Ashish.dev | All Rights Reserved
             </p>
           </motion.div>
         </motion.div>

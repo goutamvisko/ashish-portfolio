@@ -1,14 +1,14 @@
 import React from "react";
 import { motion } from "framer-motion";
-import {
-  SiReact, SiNextdotjs, SiTailwindcss, SiVuedotjs,
-  SiNodedotjs, SiPython, SiDjango, SiLaravel,
-  SiMongodb, SiMysql, SiPostgresql, SiFirebase,
-  SiDocker, SiGit, SiGraphql
-} from "react-icons/si";
 import { FaAws } from "react-icons/fa";
-
 import { Code, Server, Database, Settings } from "lucide-react";
+import { 
+  SiReact, SiRedux, SiBootstrap, SiTailwindcss, SiJavascript ,
+  SiNodedotjs, SiPhp, SiTypescript, SiCodeigniter, 
+  SiMysql, SiMongodb, SiFirebase, 
+  SiGit, SiGithub, SiDocker 
+} from "react-icons/si";
+import { VscTerminalCmd } from "react-icons/vsc";
 
 // Structured skill data by category
 const skillCategories = [
@@ -16,10 +16,12 @@ const skillCategories = [
     title: "Frontend",
     icon: <Code className="w-6 h-6" />,
     skills: [
-      { icon: <SiReact size={28} />, name: "React" },
-      { icon: <SiNextdotjs size={28} />, name: "Next.js" },
-      { icon: <SiVuedotjs size={28} />, name: "Vue.js" },
-      { icon: <SiTailwindcss size={28} />, name: "Tailwind CSS" },
+      { icon: <SiJavascript size={28} />, name: "JavaScript" },
+      { icon: <SiTypescript size={28} />, name: "TypeScript" },
+      { icon: <SiReact size={28} />, name: "React.js" },
+      { icon: <SiRedux size={28} />, name: "Redux" },
+      { icon: <SiBootstrap size={28} />, name: "Bootstrap" },
+      { icon: <SiTailwindcss size={28} />, name: "TailwindCSS" },
     ],
   },
   {
@@ -27,19 +29,16 @@ const skillCategories = [
     icon: <Server className="w-6 h-6" />,
     skills: [
       { icon: <SiNodedotjs size={28} />, name: "Node.js" },
-      { icon: <SiPython size={28} />, name: "Python" },
-      { icon: <SiDjango size={28} />, name: "Django" },
-      { icon: <SiLaravel size={28} />, name: "Laravel" },
-      { icon: <SiGraphql size={28} />, name: "GraphQL" },
+      { icon: <SiPhp size={28} />, name: "PHP" },
+      { icon: <SiCodeigniter size={28} />, name: "CodeIgniter" },
     ],
   },
   {
     title: "Databases",
     icon: <Database className="w-6 h-6" />,
     skills: [
-      { icon: <SiMongodb size={28} />, name: "MongoDB" },
       { icon: <SiMysql size={28} />, name: "MySQL" },
-      { icon: <SiPostgresql size={28} />, name: "PostgreSQL" },
+      { icon: <SiMongodb size={28} />, name: "MongoDB" },
       { icon: <SiFirebase size={28} />, name: "Firebase" },
     ],
   },
@@ -47,9 +46,10 @@ const skillCategories = [
     title: "DevOps & Tools",
     icon: <Settings className="w-6 h-6" />,
     skills: [
-      { icon: <SiDocker size={28} />, name: "Docker" },
-      { icon: <FaAws size={28} />, name: "AWS" },
       { icon: <SiGit size={28} />, name: "Git" },
+      { icon: <SiGithub size={28} />, name: "GitHub" },
+      { icon: <SiDocker size={28} />, name: "Docker" },
+      { icon: <VscTerminalCmd size={28} />, name: "CI/CD" },
     ],
   },
 ];
@@ -111,9 +111,11 @@ export default function Skills({ id }) {
   };
 
   return (
-    <section id={id} className="bg-[#121212] font-sans text-white py-20 md:py-28">
+    <section
+      id={id}
+      className="bg-[#121212] font-sans text-white py-5 md:py-10"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
         {/* Header */}
         <motion.div
           className="text-center mb-16"

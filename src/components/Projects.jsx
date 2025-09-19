@@ -11,56 +11,34 @@ import "swiper/css/navigation";
 import "swiper/css/effect-fade";
 
 // Project data with dummy images
+// Project data with real experience
 const projects = [
   {
-    title: "AI E-commerce Platform",
-    description: "An online learning platform with AI-driven course management, quizzes, and progress tracking.",
-    technologies: ["Node.js", "React", "MongoDB", "Stripe"],
-    liveDemo: "#",
-    github: "#",
-    image: "https://placehold.co/800x600/1e1e1e/c084fc?text=AI+Platform",
+    title: "Anahee – E-commerce Application",
+    description:
+      "Developed a full-stack e-commerce platform with separate frontend, backend, and admin dashboard. Implemented product catalog, cart, checkout, online payments via PhonePe, and automated shipping integration with Shiprocket. Led a team of 5 developers, guiding architecture and ensuring on-time delivery.",
+    technologies: ["React.js", "TypeScript", "Node.js", "MySQL", "PhonePe", "Shiprocket"],
+  
+    image: "https://placehold.co/800x600/1e1e1e/c084fc?text=Anahee+E-commerce",
   },
   {
-    title: "Social Media App",
-    description: "A mobile-first social media application featuring real-time chat and push notifications.",
-    technologies: ["React Native", "Firebase", "Redux"],
-    liveDemo: "#",
-    github: "#",
-    image: "https://placehold.co/800x600/1e1e1e/818cf8?text=Social+App",
+    title: "Coffee Station Web App",
+    description:
+      "Built a role-based web application (Admin, Staff, User) for managing coffee shop orders with real-time order updates using Firebase. Designed with CodeIgniter, MySQL, and custom frontend in JavaScript, HTML, and CSS.",
+    technologies: ["CodeIgniter", "MySQL", "Firebase", "JavaScript", "HTML", "CSS"],
+    
+    image: "https://placehold.co/800x600/1e1e1e/818cf8?text=Coffee+Station",
   },
   {
-    title: "SaaS Project Manager",
-    description: "A comprehensive SaaS platform for project management with robust team collaboration features.",
-    technologies: ["Vue.js", "Django", "PostgreSQL", "Docker"],
-    liveDemo: "#",
-    github: "#",
-    image: "https://placehold.co/800x600/1e1e1e/f472b6?text=SaaS+Manager",
-  },
-  {
-    title: "Visko Group Platform",
-    description: "An enterprise-level platform for the Visko group, focusing on scalability and performance.",
-    technologies: ["Next.js", "TypeScript", "GraphQL"],
-    liveDemo: "#",
-    github: "#",
-    image: "https://placehold.co/800x600/1e1e1e/a78bfa?text=Visko+Group",
-  },
-  {
-    title: "Visko Group Platform",
-    description: "An enterprise-level platform for the Visko group, focusing on scalability and performance.",
-    technologies: ["Next.js", "TypeScript", "GraphQL"],
-    liveDemo: "#",
-    github: "#",
-    image: "https://placehold.co/800x600/1e1e1e/a78bfa?text=Visko+Group",
-  },
-  {
-    title: "Visko Group Platform",
-    description: "An enterprise-level platform for the Visko group, focusing on scalability and performance.",
-    technologies: ["Next.js", "TypeScript", "GraphQL"],
-    liveDemo: "#",
-    github: "#",
-    image: "https://placehold.co/800x600/1e1e1e/a78bfa?text=Visko+Group",
+    title: "Elites Capital – Investment Management Platform",
+    description:
+      "Developed a full-stack investment management platform with role-based access (Super Admin, Admin, Customer). Features include adding investments, withdrawals, transaction tracking, and advanced admin controls. Integrated CI/CD pipelines and containerization for deployment.",
+    technologies: ["React.js", "Redux Toolkit", "CodeIgniter", "MySQL", "Docker", "CI/CD"],
+
+    image: "https://placehold.co/800x600/1e1e1e/f472b6?text=Elites+Capital",
   },
 ];
+
 
 export default function Projects({ id }) {
   const containerVariants = {
@@ -77,7 +55,7 @@ export default function Projects({ id }) {
   };
 
   return (
-    <section id={id} className="bg-[#121212] font-sans text-white py-20 md:py-28">
+    <section id={id} className="bg-[#121212] font-sans text-white py-5 md:py-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -136,7 +114,7 @@ export default function Projects({ id }) {
                         </span>
                       ))}
                     </div>
-                    <div className="flex items-center gap-4">
+                    {/* <div className="flex items-center gap-4">
                       <a
                         href={project.liveDemo}
                         className="inline-flex items-center gap-2 text-white font-semibold hover:text-purple-300 transition-colors"
@@ -149,7 +127,7 @@ export default function Projects({ id }) {
                       >
                         <FaGithub size={20} />
                       </a>
-                    </div>
+                    </div> */}
                   </motion.div>
                 </div>
               </SwiperSlide>

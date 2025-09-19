@@ -2,44 +2,40 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { BookOpen, FlaskConical } from "lucide-react";
 import React, { useRef } from "react";
 
-const timelineData = [
+const timelineData = [ 
   {
     type: "education",
     year: "2020-2024",
-    title: "MIT",
-    description: "Bachelor’s Degree in Computer Science",
-  },
-  {
-    type: "research",
-    year: "2023-2024",
-    title: "Advanced Data Analytics with Big Data Tools",
-    description: "Utilized big data tools for advanced analytics and insights.",
-  },
-  {
-    type: "research",
-    year: "2021-2023",
-    title: "Cloud-Native Application Architectures",
-    description: "Studied best practices for designing cloud-native applications.",
+    title: "RGPV University",
+    description: "B.Tech in Computer Science Engineering (GPA: 7.1)",
   },
   {
     type: "education",
     year: "2018-2019",
-    title: "Harvard University",
-    description: "Certification in React & Node.js",
-  },
-  {
-    type: "research",
-    year: "2019-2020",
-    title: "AI-Driven User Experience Personalization",
-    description: "Leveraged AI to personalize user experiences based on behavior.",
+    title: "Certification in React & Node.js",
+    description: "Focused on building scalable web applications with modern JavaScript frameworks.",
   },
   {
     type: "education",
     year: "2015-2016",
-    title: "Stanford University",
-    description: "Certification in Full Stack Web Development",
+    title: "Certification in Full Stack Web Development",
+    description: "Hands-on training in frontend, backend, and database technologies.",
+  },
+  {
+    type: "research",
+    year: "2022-2023",
+    title: "Full-Stack Application Architecture",
+    description: "Explored scalable designs for MERN stack applications, API optimization, and microservices.",
+  },
+  {
+    type: "research",
+    year: "2023-2024",
+    title: "DevOps & Cloud Automation",
+    description: "Researched CI/CD pipelines, containerization with Docker, and cloud-native deployment strategies.",
   },
 ];
+
+
 
 const TimelineItem = ({ item }) => {
   const itemRef = useRef(null);
@@ -88,7 +84,7 @@ export default function Education({ id }) {
   return (
     <section
       id={id}
-      className="bg-[#121212] font-sans text-white py-20 md:py-28"
+      className="bg-[#121212] font-sans text-white py-5 md:py-10"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}

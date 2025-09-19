@@ -2,9 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import CountUp from "react-countup";
-
-// Placeholder for a profile image. Replace with your actual image URL.
-const profileImageUrl = "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=800&q=80";
+import img from "../assets/img/ashish.jpeg";
 
 // A reusable counter component for the animated stats
 const StatCounter = ({ value, label }) => {
@@ -64,7 +62,7 @@ export default function About({ id }) {
   };
 
   return (
-    <section id={id} className="bg-[#121212] font-sans text-white py-20 md:py-28">
+    <section id={id} className="bg-[#121212] font-sans text-white py-5 md:py-5">
       {/* SVG for the blob clip-path definition (same as in Hero section) */}
       <svg width="0" height="0" className="absolute">
         <defs>
@@ -96,9 +94,9 @@ export default function About({ id }) {
               transition={{ type: "spring", stiffness: 300 }}
             >
               <img
-                src={profileImageUrl}
+                src={img}
                 alt="About Me"
-                className="w-full h-full object-cover"
+                className="w-full h-full"
               />
               <div className="absolute inset-0 bg-purple-500/20 mix-blend-color"></div>
             </motion.div>
@@ -113,7 +111,9 @@ export default function About({ id }) {
               Crafting Digital <span className="text-gradient">Experiences</span>
             </motion.h2>
             <motion.p className="text-gray-400 text-lg leading-relaxed mb-8" variants={itemVariants}>
-              I'm a passionate Python & AI/ML Developer with a knack for creating seamless and engaging user interfaces. With a strong foundation in modern web technologies, I transform complex ideas into beautiful, functional, and user-centric digital products.
+              I'm a passionate FulStack Developer with a knack for creating seamless and engaging user interfaces. With a strong foundation in modern web technologies, 
+              I transform complex ideas into beautiful, functional, and user-centric digital products with expertise in building 
+              scalable, high-performance applications.
             </motion.p>
             
             {/* Animated Stats */}
@@ -121,7 +121,7 @@ export default function About({ id }) {
               className="grid grid-cols-2 md:grid-cols-3 gap-8"
               variants={itemVariants}
             >
-              <StatCounter value={4} label="Years Experience" />
+              <StatCounter value={6} label="Years Experience" />
               <StatCounter value={25} label="Projects Completed" />
               <StatCounter value={12} label="Happy Clients" />
             </motion.div>

@@ -1,56 +1,44 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaGoogle, FaAmazon, FaTwitter, FaPaypal } from "react-icons/fa";
-
+import { FaBuilding } from "react-icons/fa";
 // Experience data remains the same, but we can style icons directly
 const experienceData = [
   {
-    icon: <FaGoogle />,
-    company: "Google",
-    duration: "2018 – Present",
-    role: "Senior Software Engineer",
+    icon: <FaBuilding />,
+    company: "Elderberry Tech",
+    duration: "Apr 2024 – Jun 2025",
+    role: "Senior Full Stack Developer",
     responsibilities: [
-      "Led development of scalable web applications, improving performance for millions of users.",
-      "Implemented machine learning algorithms to enhance search functionality.",
-      "Collaborated with cross-functional teams using Agile methodologies.",
+      "Led the development of multiple scalable web applications using React.js, PHP, Node.js, and JavaScript.",
+      "Designed and optimized RESTful APIs and database schemas in MySQL & MongoDB for performance and scalability.",
+      "Integrated payment gateways, authentication systems, and third-party APIs to enhance product functionality.",
+      "Mentored junior developers and collaborated with cross-functional teams to ensure on-time delivery.",
     ],
-    techStack: ["Python", "TensorFlow", "Angular", "Kubernetes", "GCP"],
+    techStack: ["React.js", "Node.js", "PHP", "MySQL", "MongoDB", "JavaScript"],
   },
   {
-    icon: <FaTwitter />,
-    company: "Twitter (X)",
-    duration: "2015 – 2018",
-    role: "Full Stack Developer",
+    icon: <FaBuilding />,
+    company: "Alphawizz Private Limited",
+    duration: "Dec 2023 – Mar 2024",
+    role: "Backend Developer Intern",
     responsibilities: [
-      "Developed and maintained real-time data streaming features for the main feed.",
-      "Built and scaled back-end services to handle high-traffic loads.",
-      "Contributed to the front-end redesign using React, improving performance.",
+      "Built backend modules using PHP & CodeIgniter, focusing on secure and efficient data flow.",
+      "Developed CRUD operations and integrated web apps with MySQL databases.",
+      "Collaborated with frontend teams to implement seamless data-driven features.",
     ],
-    techStack: ["React", "Node.js", "Scala", "Kafka", "AWS"],
+    techStack: ["PHP", "CodeIgniter", "MySQL"],
   },
   {
-    icon: <FaAmazon />,
-    company: "Amazon",
-    duration: "2012 – 2015",
-    role: "Back-End Engineer",
+    icon: <FaBuilding />,
+    company: "NCS Pvt Ltd",
+    duration: "Jun 2023 – Sep 2023",
+    role: "React.js Developer Trainee",
     responsibilities: [
-        "Designed and implemented microservices for the AWS S3 team.",
-        "Optimized database queries and caching, reducing API response times by 30%.",
-        "Wrote extensive unit and integration tests to maintain high code quality.",
+      "Learned and implemented state management (Redux) and component lifecycle methods in real-world projects.",
+      "Contributed to debugging and optimization of web applications.",
+      "Assisted in migrating legacy code to a modular React.js architecture.",
     ],
-    techStack: ["Java", "Spring Boot", "DynamoDB", "AWS Lambda"],
-  },
-  {
-    icon: <FaPaypal />,
-    company: "PayPal",
-    duration: "2010 – 2012",
-    role: "Junior Web Developer",
-    responsibilities: [
-      "Assisted in developing front-end components for the payment processing app.",
-      "Fixed bugs and implemented minor features for internal financial tools.",
-      "Learned to work in a large-scale codebase and participated in code reviews.",
-    ],
-    techStack: ["JavaScript", "jQuery", "HTML/CSS", "Java", "SQL"],
+    techStack: ["React.js", "Redux", "JavaScript"],
   },
 ];
 
@@ -81,7 +69,7 @@ export default function Experience({ id }) {
   };
 
   return (
-    <section id={id} className="bg-[#121212] font-sans text-white py-20 md:py-28">
+    <section id={id} className="bg-[#121212] font-sans text-white py-5 md:py-10">
       <motion.div
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
         variants={containerVariants}

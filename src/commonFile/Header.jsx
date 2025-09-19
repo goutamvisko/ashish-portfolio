@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiMenu, FiX } from "react-icons/fi";
 import { FaCode } from "react-icons/fa";
-
-// Replace with your actual avatar image URL
-const avatarImageUrl = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=774&q=80";
+import img from "../assets/img/ashish.jpeg";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,6 +14,7 @@ const Navbar = () => {
     { name: "AboutMe", href: "#about" },
     { name: "Skills", href: "#skills" },
     { name: "Projects", href: "#projects" },
+    { name: "Contact", href: "#contact" },
   ];
 
   // Animation variants for the mobile menu
@@ -47,9 +46,9 @@ const Navbar = () => {
             {/* Avatar */}
             <a href="#home" onClick={() => setActiveLink("Home")}>
               <img
-                src={avatarImageUrl}
+                src={img}
                 alt="Avatar"
-                className="w-12 h-12 rounded-full object-cover border-2 border-white/20"
+                className="w-12 h-12 rounded-full border-2 border-white/20"
               />
             </a>
 
@@ -57,7 +56,7 @@ const Navbar = () => {
             <div className="flex items-center gap-2">
               <FaCode className="text-purple-400 text-2xl" />
               <span className="text-lg sm:text-xl font-bold text-white">
-                Goutam.dev
+                Ashish.dev
               </span>
             </div>
           </div>
