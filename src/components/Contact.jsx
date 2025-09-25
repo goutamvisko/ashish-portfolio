@@ -12,7 +12,7 @@ const contactInfo = [
   {
     icon: <Mail size={24} />,
     title: "Email Address",
-    detail: "ashishfsdroot@gmail.com",
+    detail: "ashish.devroot@gmail.com",
   },
   {
     icon: <MapPin size={24} />,
