@@ -35,6 +35,7 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/autoplay";
 import img from "../assets/img/ashish.jpeg";
+import Ashish_Cv from "../assets/img/Ashish_Cv.pdf";
 
 const Hero = () => {
   const containerVariants = {
@@ -160,7 +161,7 @@ const techIcons = [
 
             <motion.div variants={itemVariants}>
               <a
-                href="#download-cv"
+                href={Ashish_Cv}
                 className="inline-flex items-center text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 transition-all duration-300 rounded-lg group animate-gradient-border text-sm sm:text-base"
               >
                 <FaDownload className="mr-3 transition-transform group-hover:-translate-y-0.5" />
