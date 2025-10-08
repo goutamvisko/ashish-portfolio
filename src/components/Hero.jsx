@@ -31,7 +31,6 @@ import {
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 
-// Swiper styles
 import "swiper/css";
 import "swiper/css/autoplay";
 import img from "../assets/img/ashish.jpeg";

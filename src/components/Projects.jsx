@@ -2,42 +2,94 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FaGithub } from "react-icons/fa";
 import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
-
-// Import Swiper React components and styles
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, EffectFade } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/effect-fade";
 
-// Project data with dummy images
-// Project data with real experience
 const projects = [
+  {
+    title: "Remark – Recruiter Dashboard (Visko Group)",
+    period: "Sep 2024 – Present",
+    role: "Sr. Full Stack Developer",
+    description:
+      "Developed a Recruiter Dashboard designed to streamline the hiring process with advanced analytics, candidate search functionality, and real-time communication features. The platform enabled recruiters to efficiently track applications, manage candidate pipelines, and make data-driven hiring decisions.",
+    technologies: ["PHP (CI4)", "Firebase", "MySQL", "CI/CD"],
+    responsibilities: [
+      "Integrated APIs and optimized database queries for faster, scalable performance.",
+      "Automated CI/CD deployment and ensured performance and scalability under high load.",
+    ],
+    image: "https://placehold.co/800x600/1e1e1e/4ade80?text=Remark+Recruiter+Dashboard",
+  },
+  {
+    title: "CRM Platform (Visko Group)",
+    period: "Sep 2024 – Present",
+    role: "Sr. Full Stack Developer",
+    description:
+      "Architected a full-stack CRM platform with role-based dashboards using React.js, PHP (CI4), and MySQL. Implemented secure JWT authentication for multi-role access, reducing operational complexity by 40% through a centralized admin interface.",
+    technologies: ["React.js", "TypeScript", "PHP (CI4)", "Node.js", "MySQL"],
+    responsibilities: [
+      "Developed full-stack features with PHP backend and React.js frontend.",
+      "Designed and optimized MySQL database schemas.",
+      "Implemented JWT authentication and role-based access control.",
+      "Conducted code reviews and mentored junior developers.",
+      "Optimized performance for large-scale CRM data handling.",
+    ],
+    image: "https://placehold.co/800x600/1e1e1e/60a5fa?text=CRM+Platform",
+  },
   {
     title: "Anahee – E-commerce Application",
     description:
       "Developed a full-stack e-commerce platform with separate frontend, backend, and admin dashboard. Implemented product catalog, cart, checkout, online payments via PhonePe, and automated shipping integration with Shiprocket. Led a team of 5 developers, guiding architecture and ensuring on-time delivery.",
-    technologies: ["React.js", "TypeScript", "Node.js", "MySQL", "PhonePe", "Shiprocket"],
-  
+    technologies: [
+      "React.js",
+      "TypeScript",
+      "Node.js",
+      "MySQL",
+      "PhonePe",
+      "Shiprocket",
+    ],
     image: "https://placehold.co/800x600/1e1e1e/c084fc?text=Anahee+E-commerce",
   },
   {
     title: "Coffee Station Web App",
     description:
       "Built a role-based web application (Admin, Staff, User) for managing coffee shop orders with real-time order updates using Firebase. Designed with CodeIgniter, MySQL, and custom frontend in JavaScript, HTML, and CSS.",
-    technologies: ["CodeIgniter", "MySQL", "Firebase", "JavaScript", "HTML", "CSS"],
-    
+    technologies: [
+      "CodeIgniter",
+      "MySQL",
+      "Firebase",
+      "JavaScript",
+      "HTML",
+      "CSS",
+    ],
     image: "https://placehold.co/800x600/1e1e1e/818cf8?text=Coffee+Station",
   },
   {
     title: "Elites Capital – Investment Management Platform",
     description:
       "Developed a full-stack investment management platform with role-based access (Super Admin, Admin, Customer). Features include adding investments, withdrawals, transaction tracking, and advanced admin controls. Integrated CI/CD pipelines and containerization for deployment.",
-    technologies: ["React.js", "Redux Toolkit", "CodeIgniter", "MySQL", "Docker", "CI/CD"],
-
+    technologies: [
+      "React.js",
+      "Redux Toolkit",
+      "CodeIgniter",
+      "MySQL",
+      "Docker",
+      "CI/CD",
+    ],
     image: "https://placehold.co/800x600/1e1e1e/f472b6?text=Elites+Capital",
   },
+  {
+    title: "Business Websites – Sitent Web & Graphics Design",
+    description:
+      "Developed responsive business websites with complete front-end and back-end functionality. Focused on clean UI, performance optimization, and robust PHP-based backend ensuring smooth user experience, scalability, and security.",
+    technologies: ["HTML", "CSS", "JavaScript", "PHP"],
+    image:
+      "https://placehold.co/800x600/1e1e1e/34d399?text=Business+Websites",
+  },
 ];
+
 
 
 export default function Projects({ id }) {

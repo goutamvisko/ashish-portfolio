@@ -1,21 +1,37 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaAws } from "react-icons/fa";
-import { Code, Server, Database, Settings } from "lucide-react";
-import { 
-  SiReact, SiRedux, SiBootstrap, SiTailwindcss, SiJavascript ,
-  SiNodedotjs, SiPhp, SiTypescript, SiCodeigniter, 
-  SiMysql, SiMongodb, SiFirebase, 
-  SiGit, SiGithub, SiDocker 
+import { Code, Server, Database, Settings, TestTube2 } from "lucide-react";
+import {
+  SiHtml5,
+  SiCss3,
+  SiJavascript,
+  SiTypescript,
+  SiReact,
+  SiRedux,
+  SiBootstrap,
+  SiTailwindcss,
+  SiNodedotjs,
+  SiPhp,
+  SiCodeigniter,
+  SiMysql,
+  SiMongodb,
+  SiFirebase,
+  SiDocker,
+  SiJenkins,
+  SiGithub,
+  SiGitlab,
+  SiPostman,
 } from "react-icons/si";
-import { VscTerminalCmd } from "react-icons/vsc";
+import { VscVscode } from "react-icons/vsc"; // ✅ Correct import for VS Code icon
 
-// Structured skill data by category
 const skillCategories = [
   {
-    title: "Frontend",
+    title: "Frontend Development",
     icon: <Code className="w-6 h-6" />,
     skills: [
+      { icon: <SiHtml5 size={28} />, name: "HTML" },
+      { icon: <SiCss3 size={28} />, name: "CSS" },
       { icon: <SiJavascript size={28} />, name: "JavaScript" },
       { icon: <SiTypescript size={28} />, name: "TypeScript" },
       { icon: <SiReact size={28} />, name: "React.js" },
@@ -25,7 +41,7 @@ const skillCategories = [
     ],
   },
   {
-    title: "Backend",
+    title: "Backend Integration",
     icon: <Server className="w-6 h-6" />,
     skills: [
       { icon: <SiNodedotjs size={28} />, name: "Node.js" },
@@ -43,18 +59,35 @@ const skillCategories = [
     ],
   },
   {
-    title: "DevOps & Tools",
+    title: "Cloud & DevOps",
     icon: <Settings className="w-6 h-6" />,
     skills: [
-      { icon: <SiGit size={28} />, name: "Git" },
-      { icon: <SiGithub size={28} />, name: "GitHub" },
+      { icon: <FaAws size={28} />, name: "AWS" },
       { icon: <SiDocker size={28} />, name: "Docker" },
-      { icon: <VscTerminalCmd size={28} />, name: "CI/CD" },
+      { icon: <SiGithub size={28} />, name: "GitHub Actions" },
+      { icon: <SiGitlab size={28} />, name: "GitLab CI/CD" },
+      { icon: <SiJenkins size={28} />, name: "Jenkins" },
+    ],
+  },
+  {
+    title: "Testing & Optimization",
+    icon: <TestTube2 className="w-6 h-6" />,
+    skills: [
+      { icon: <SiJavascript size={28} />, name: "Unit Testing" },
+      { icon: <SiNodedotjs size={28} />, name: "Performance Tuning" },
+    ],
+  },
+  {
+    title: "Tools & Platforms",
+    icon: <Settings className="w-6 h-6" />,
+    skills: [
+      { icon: <SiPostman size={28} />, name: "Postman" },
+      { icon: <VscVscode size={28} />, name: "VS Code" }, // ✅ fixed here
+      { icon: <SiDocker size={28} />, name: "Shiprocket" },
     ],
   },
 ];
 
-// Reusable component for each skill category pod
 const SkillCategory = ({ title, icon, skills }) => {
   const listVariants = {
     visible: { transition: { staggerChildren: 0.05 } },

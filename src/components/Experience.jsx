@@ -1,8 +1,30 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaBuilding } from "react-icons/fa";
-// Experience data remains the same, but we can style icons directly
+
 const experienceData = [
+  {
+    icon: <FaBuilding />,
+    company: "Visko Group",
+    duration: "Sep 2024 – Present",
+    role: "Sr. Full Stack Developer",
+    responsibilities: [
+      "Developed a Recruiter Dashboard (Remark) to streamline the hiring process with advanced analytics, candidate search functionality, and real-time communication features.",
+      "Architected a CRM platform with role-based dashboards using React.js, PHP (CI4), and MySQL.",
+      "Implemented secure JWT authentication for multi-role access and automated CI/CD deployment pipelines.",
+      "Integrated APIs, optimized database queries, and ensured scalable, high-performance system architecture.",
+      "Mentored junior developers and conducted code reviews to maintain clean, maintainable codebases.",
+    ],
+    techStack: [
+      "React.js",
+      "TypeScript",
+      "PHP (CI4)",
+      "Node.js",
+      "MySQL",
+      "Firebase",
+      "CI/CD",
+    ],
+  },
   {
     icon: <FaBuilding />,
     company: "Elderberry Tech",
@@ -18,29 +40,37 @@ const experienceData = [
   },
   {
     icon: <FaBuilding />,
-    company: "Alphawizz Private Limited",
-    duration: "Dec 2023 – Mar 2024",
-    role: "Backend Developer Intern",
+    company: "Sitent Web & Graphics Design",
+    duration: "Jan 2024 – Mar 2024",
+    role: "PHP Developer",
     responsibilities: [
-      "Built backend modules using PHP & CodeIgniter, focusing on secure and efficient data flow.",
-      "Developed CRUD operations and integrated web apps with MySQL databases.",
-      "Collaborated with frontend teams to implement seamless data-driven features.",
+      "Developed responsive business websites with complete front-end and back-end functionality.",
+      "Focused on clean UI design, performance optimization, and robust PHP-based backend systems.",
+      "Ensured smooth user experience, scalability, and strong application security.",
     ],
-    techStack: ["PHP", "CodeIgniter", "MySQL"],
+    techStack: ["HTML", "CSS", "JavaScript", "PHP"],
   },
   {
     icon: <FaBuilding />,
-    company: "NCS Pvt Ltd",
-    duration: "Jun 2023 – Sep 2023",
-    role: "React.js Developer Trainee",
+    company: "Coffee Station Web App",
+    duration: "Aug 2023 – Sep 2023",
+    role: "Full Stack Developer",
     responsibilities: [
-      "Learned and implemented state management (Redux) and component lifecycle methods in real-world projects.",
-      "Contributed to debugging and optimization of web applications.",
-      "Assisted in migrating legacy code to a modular React.js architecture.",
+      "Built a role-based coffee shop management system for Admin, Staff, and Users with real-time Firebase updates.",
+      "Developed frontend using HTML, CSS, and JavaScript with backend in CodeIgniter and MySQL.",
+      "Implemented live order status tracking and optimized database structure for performance.",
     ],
-    techStack: ["React.js", "Redux", "JavaScript"],
+    techStack: [
+      "CodeIgniter",
+      "MySQL",
+      "Firebase",
+      "JavaScript",
+      "HTML",
+      "CSS",
+    ],
   },
 ];
+
 
 export default function Experience({ id }) {
   // State to track the currently selected tab (company)

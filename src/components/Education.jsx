@@ -5,31 +5,26 @@ import React, { useRef } from "react";
 const timelineData = [ 
   {
     type: "education",
-    year: "2020-2024",
     title: "RGPV University",
-    description: "B.Tech in Computer Science Engineering (GPA: 7.1)",
+    description: "B.Tech in Computer Science Engineering",
   },
   {
     type: "education",
-    year: "2018-2019",
     title: "Certification in React & Node.js",
     description: "Focused on building scalable web applications with modern JavaScript frameworks.",
   },
   {
     type: "education",
-    year: "2015-2016",
     title: "Certification in Full Stack Web Development",
     description: "Hands-on training in frontend, backend, and database technologies.",
   },
   {
     type: "research",
-    year: "2022-2023",
     title: "Full-Stack Application Architecture",
     description: "Explored scalable designs for MERN stack applications, API optimization, and microservices.",
   },
   {
     type: "research",
-    year: "2023-2024",
     title: "DevOps & Cloud Automation",
     description: "Researched CI/CD pipelines, containerization with Docker, and cloud-native deployment strategies.",
   },
@@ -62,7 +57,6 @@ const TimelineItem = ({ item }) => {
             {item.type === "education" ? <BookOpen /> : <FlaskConical />}
           </span>
           <div className="flex-1">
-            <p className="text-xs text-gray-400 mb-1">{item.year}</p>
             <h3 className="font-bold text-white">{item.title}</h3>
           </div>
         </div>
